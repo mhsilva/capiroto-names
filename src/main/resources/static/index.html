@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="CapirotoNames" ng-controller="IndexController">
+<head>
+<meta charset="UTF-8">
+<title>{{nome}} Names</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script type="text/javascript" src="js/AppConfig.js"></script>
+</head>
+<body>
+	<div class="container" style="text-align: center">
+		<div class="jumbotron" style="text-align: center;" ng-init=refresh()>
+			<h2>Bem-vindo à compilação da lista de nomes do(a) {{nome}}</h2>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Novo nome"
+						ng-model="novoNome"> <span class="input-group-btn">
+						<button class="btn btn-primary" ng-click="adicionar()">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+							Adicionar
+						</button>
+						<button class="btn btn-default" ng-click="refresh()">
+							<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+							Refresh
+						</button>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<table class="table table-hover table-condensed table-bordered">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="x in nomesList">
+						<td style="text-align: left">{{x.nome}}</td>
+						<td><a><span class="glyphicon glyphicon-trash"
+								aria-hidden="true" ng-click="deleteRow(this, $index)"></span></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- Controllers -->
+	<script type="text/javascript" src="js/IndexController.js"></script>
+</body>
+</html>
